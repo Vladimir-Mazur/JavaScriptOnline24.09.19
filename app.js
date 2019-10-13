@@ -1,127 +1,186 @@
-//Объекты. Задачи.
-
-let phone = {};
-
-phone.product = "iphone";
-phone.price = "1000";
-phone.currency = "dollar";
-phone.details = {};
-phone.details.model;
-phone.details.color;
-
-console.log(phone);
-
-//Тернарный оператор. Switch case. Задачи.
+//Пометка к работе: спасибо большое за то, что напомнили про операторы && и ||. Я все никак не мог вспомнить про них, поэтому везде просто дублировал. Теперь я это учел и в дальнейшем буду их использовать
+//Функции высшего порядка. Задачи.
 //Задача 1
-let a = "block";
 
-switch (a) {
-  case "block":
-    console.log("block");
-    break;
-  case "none":
-    console.log("none");
-    break;
-  case "inline":
-    console.log("inline");
-    break;
-  default:
-    console.log("other");
-    break;
+let array1 = ["my", "name", "is", "Trinity"];
+array2 = [10, 20, 30];
+array3 = [{ age: 45, name: "Jhon" }, { age: 20, name: "Aaron" }];
+array4 = ["abc", "123"];
+
+function newValue(value, fn) {
+  return fn(value);
 }
 
-//Задача 2.1
-let overflow = "hidden";
-
-overflow = overflow === "hidden" ? "visible" : "hidden";
-
-console.log(overflow);
-
-//Задача 2.2
-let x = 0;
-
-x = x === 0 ? 1 : x < 0 ? "less then zero" : x * 10;
-
-console.log(x);
-
-//Задача 2.3
-let car = {
-  name: "Lexus",
-  age: 10,
-  create: 2008,
-  needRepair: false
-};
-
-car.age > 5 ? (needRepair = true) : (needRepair = false);
-car.age > 5 ? console.log("Need Repair") : (needRepair = false);
-
-//Циклы. Задачи.
-//Задача 1
-let easycode = "i am in the easycode";
-newEasycode = easycode[0].toUpperCase();
-
-for (let i = 0; i < easycode.length - 1; i++) {
-  if (easycode[i] === " ") {
-    newEasycode += easycode[i + 1].toUpperCase();
-  } else {
-    newEasycode += easycode[i + 1];
+function handler1(arr) {
+  let result = "";
+  for (const elem of arr) {
+    result += elem;
   }
+  return 'New value: ' + result;
 }
 
-console.log(newEasycode);
+function handler2(arr) {
+  const newArray = [];
+  for (let i = 0; i < arr.length; i++) {
+    newArray.push(arr[i] * 10);
+  }
+  return 'New value: ' + newArray;
+}
+
+function handler3(arr) {
+  let result = "";
+  arr.forEach(user => {
+    result += user.name + " is " + user.age + ", ";
+  });
+  return 'New value: ' + result;
+}
+
+function handler4(arr) {
+  let result = "";
+  arr.forEach(elem => {
+    result +=
+      elem
+        .split("")
+        .reverse()
+        .join("") + ", ";
+  });
+  return 'New value: ' + result;
+}
+
+console.log(newValue(array1, handler1));
 
 //Задача 2
-let invertString = "tseb eht ma i";
-newInvertString = "";
+let myArray = [-30, -24, 0, 5, 7, 304]
 
-for (let i = invertString.length - 1; i >= 0; i--) {
-  newInvertString += invertString[i];
+function insteadOfEvery(arr, fn) {
+  if (typeof arr.isArray === 'undefined') {
+    if (typeof fn === 'function') {
+      return fn(arr)
+    } else {
+      return 'there is not any array'
+    }
+  } else {
+    return 'there is not any array'
+  }
 }
 
-console.log(newInvertString);
+function moreThanFive(arr) {
+  let result = arr.sort((a, b) => a - b);
+  if (result[0] > 5) {
+    result = true;
+  } else {
+    result = false;
+  }
+  return result
+}
+
+console.log(insteadOfEvery(myArray, moreThanFive));
+
+//Перебирающие методы. Задачи.
+//Задача 1
+let arrayNumbers = [1, 2, 3, 5, 8, 9, 10];
+result = [];
+boolean = true;
+
+for (const element of arrayNumbers) {
+  if (element % 2 === 1) {
+    boolean = true;
+    result.push({
+      digit: element,
+      odd: boolean
+    });
+  } else {
+    boolean = false;
+    result.push({
+      digit: element,
+      odd: boolean
+    });
+  }
+}
+// попводу 0. Я почитал не мало литературы и уточнил, что правило четности не властно за пределами целых чисел, поэтому данная запись не является ошибкой
+
+console.log(result);
+
+//Задача 2
+let withNullArray = [12, 4, 50, 1, 0, 18, 40];
+    withNullResult = true;
+if (withNullArray.some((number) => {
+  return number === 0
+})) {
+  withNullResult = false;
+} else {
+  withNullResult = true;
+}
+
+console.log(withNullResult);
 
 //Задача 3
-let factorial = 10;
-newFactorial = 1;
+let worldArray = ['yes', 'hello', 'no', 'easycode', 'what'];
+    moreThanThree = true;
 
-for (let i = 1; i <= factorial; i++) {
-  newFactorial = newFactorial * i;
+if (worldArray.some((elem) => {
+  return elem.length > 3
+})) {
+  moreThanThree = true;
+} else {
+  moreThanThree = false;
 }
 
-console.log(newFactorial);
+console.log(moreThanThree);
 
 //Задача 4
-let string = "JavaScript is a pretty good language";
-newString = "";
+let proposition = [{char:"a",index:12}, {char:"w",index:8}, {char:"Y",index:10}, {char:"p",index:3}, {char:"p",index:2},
+{char:"N",index:6}, {char:" ",index:5}, {char:"y",index:4}, {char:"r",index:13}, {char:"H",index:0},
+{char:"e",index:11}, {char:"a",index:1}, {char:" ",index:9}, {char:"!",index:14}, {char:"e",index:7}]
 
-for (let i = 0; i < string.length; i++) {
-  if (string[i] !== " ") {
-    newString += string[i].toUpperCase();
+function getProposition(arr) {
+  let readyProposition = '';
+  let resultArray = arr.sort((a, b) => {
+    return a.index - b.index;
+  });
+  for (let elem of arr) {
+    readyProposition += elem.char;
   }
+  return readyProposition
 }
 
-console.log(newString);
+console.log(getProposition(proposition));
+//если что, в данном контексте proposition переводится как предложение, и если я не правильно перевел - не бейте
 
-//Задача 5
-let numArray = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15];
+//Метод Sort. Задачи.
+//Задача 1
+let someArray = [  [14, 45],  [1],  ['a', 'c', 'd']  ]
 
-for (let value of numArray) {
-  if (value % 2 === 1) {
-    console.log(value);
-  }
+let readyArray = someArray.sort((a, b) => {return a.length - b.length});
+
+console.log(readyArray);
+
+//Задача 2
+let infoArray = [
+  {cpu: 'intel', info: {cores:2, сache: 3}},
+  {cpu: 'intel', info: {cores:4, сache: 4}},
+  {cpu: 'amd', info: {cores:1, сache: 1}},
+  {cpu: 'intel', info: {cores:3, сache: 2}},
+  {cpu: 'amd', info: {cores:4, сache: 2}}
+]
+
+let newInfoArray = infoArray.sort((a, b) => {return a.info.cores - b.info.cores});
+
+console.log(newInfoArray);
+
+//Задача 3
+let products = [
+  {title: 'prod1', price: 5.2}, {title: 'prod2', price: 0.18},
+  {title: 'prod3', price: 15}, {title: 'prod4', price: 25},
+  {title: 'prod5', price: 18.9}, {title: 'prod6', price: 8},
+  {title: 'prod7', price: 19}, {title: 'prod8', price: 63}
+];
+
+function filterCollection(arr) {
+  let newArr = [];
+  newArr = arr.filter((array) => array.price >= 15 && array.price <= 30);
+  newArr.sort((a, b) => a.price - b.price);
+  return newArr;
 }
 
-//Задача 6
-let list = {
-  name: "denis",
-  work: "easycode",
-  age: 29
-};
-
-for (let key in list) {
-  if (typeof list[key] === "string") {
-    list[key] = list[key].toUpperCase();
-  }
-}
-
-console.log(list);
+console.log(filterCollection(products))
