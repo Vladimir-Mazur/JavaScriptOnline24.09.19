@@ -82,7 +82,7 @@ for (let i = ul.children.length + 1; i <= 6; i++) {
 // Задача 3 
 let body = document.querySelector('body')
 let img = document.createElement('img')
-img.src = 'img/обезьяна.jpg';
+img.src = '../img/обезьяна.jpg';
 img.alt = 'обезьяна';
 img.style.width = "300px"
 body.insertAdjacentElement('afterbegin', img)
@@ -140,18 +140,6 @@ const users = [
    }
  ];
 
-// let table = document.createElement('table');
-// let firstRow = document.createElement('tr')
-// let th1 = '<th>#</th>';
-// let th2 = '<th>Name</th>';
-// let th3 = '<th>Email</th>';
-// let th4 = '<th>Balance</th>';
-// firstRow.append(th1)
-// firstRow.append(th2)
-// firstRow.append(th3)
-// firstRow.append(th4)
-// table.append(firstRow)
-// base.insertAdjacentHTML('beforeend', firstRow)
 const tableArr=['<table>'];
 tableArr.push('<tr><th>' + '#' + '</th>' + '<th>' + 'Name' + '</th>' + '<th>' + 'Email' + '</th>' + '<th>' + 'Balance' + '</th>' + '</tr>');
 for (i = 0; i < users.length; i++){
