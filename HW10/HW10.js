@@ -10,111 +10,110 @@
 // картинка(по умолчанию), рейтинг(select), жанр (строка)
 // - массив
 
-
 const ARRAY_FIELDS = [
-   {name: 'book_name', label: 'Название'},
-   {name: 'price', label: 'Цена'},
-   {name: 'author', label: 'автор'},
-   {name: 'country', label: 'страна'},
-   {name: 'url', label: 'картинка'},
-   {
-       name: 'rate',
-       label: 'рейтинг',
-       choices: [1, 2, 3, 4, 5],
-       type: 'select',
-   },
-   {name: 'genre', label: 'жанр'},
-];
+  { name: 'book_name', label: 'Название' },
+  { name: 'price', label: 'Цена' },
+  { name: 'author', label: 'автор' },
+  { name: 'country', label: 'страна' },
+  { name: 'url', label: 'картинка' },
+  {
+    name: 'rate',
+    label: 'рейтинг',
+    choices: [1, 2, 3, 4, 5],
+    type: 'select',
+  },
+  { name: 'genre', label: 'жанр' },
+]
 
-const books = [];
+const books = []
 
 class Field {
-   constructor({name, label}) {
-       this.name = name;
-       this.label = label;
-   }
+  constructor({ name, label }) {
+    this.name = name
+    this.label = label
+  }
 }
 
 class InputField extends Field {
-   render() {
-       const html = `<label class="label"><span>${this.label}</span>
+  render() {
+    const html = `<label class="label"><span>${this.label}</span>
            <input name=${this.name} value="" />
-       </label>`;
-       return html
-   }
+       </label>`
+    return html
+  }
 }
 
 class SelectField extends Field {
-   constructor(field) {
-       super(field)
-       const {choices} = field;
-       this.choices = choices;
-   }
-   render() {
-       const html = `<label class="label"><span>${this.label}</span>
+  constructor(field) {
+    super(field)
+    const { choices } = field
+    this.choices = choices
+  }
+  render() {
+    const html = `<label class="label"><span>${this.label}</span>
            <select name=${this.name}>
-               ${this.choices.map(choice => `<option>${choice}</option>`)}
+               ${this.choices.map((choice) => `<option>${choice}</option>`)}
            </select>
-       </label>`;
-       return html
-   }
+       </label>`
+    return html
+  }
 }
 
 class Form {
-   constructor(selector) {
-       this.selector = selector;
-       this.init()
-   }
-   init() {
-       const form = document.createElement('form');
-       const bookForm = document.querySelector(this.selector);
-       ARRAY_FIELDS.forEach((field) => {
-           const inputName = field.type === 'select' ? new SelectField(field) : new InputField(field);
-           const html = inputName.render();
-           form.insertAdjacentHTML('beforeend', html);
-       });
-       const btn = document.createElement('button');
-       btn.textContent = 'Добавить книгу';
-       btn.addEventListener('click', this.addBook)
-       form.append(btn);
-       bookForm.append(form);
-   }
-   addBook(event) {
-       event.preventDefault();
-       const book = ARRAY_FIELDS.reduce((acc, {name}) => {
-           const input = document.querySelector(`[name="${name}"]`).value;
-           return {...acc, [name]: input}
-       }, {})
-       books.push(book)
-       listBooks.updateListBooks()
-   }
+  constructor(selector) {
+    this.selector = selector
+    this.init()
+  }
+  init() {
+    const form = document.createElement('form')
+    const bookForm = document.querySelector(this.selector)
+    ARRAY_FIELDS.forEach((field) => {
+      const inputName = field.type === 'select' ? new SelectField(field) : new InputField(field)
+      const html = inputName.render()
+      form.insertAdjacentHTML('beforeend', html)
+    })
+    const btn = document.createElement('button')
+    btn.textContent = 'Добавить книгу'
+    btn.addEventListener('click', this.addBook)
+    form.append(btn)
+    bookForm.append(form)
+  }
+  addBook(event) {
+    event.preventDefault()
+    const book = ARRAY_FIELDS.reduce((acc, { name }) => {
+      const input = document.querySelector(`[name="${name}"]`).value
+      return { ...acc, [name]: input }
+    }, {})
+    books.push(book)
+    listBooks.updateListBooks()
+  }
 }
 
 class Book {
-   constructor(book) {
-       this.book = book;
-   }
-   render() {
-       const {book_name, price} = this.book;
-       const html = `<div>Новая книга вот - ${book_name} - ${price}</div>`
-       return html;
-   }
+  constructor(book) {
+    this.book = book
+  }
+  render() {
+    const { book_name, price } = this.book
+    const html = `<div>Новая книга вот - ${book_name} - ${price}</div>`
+    return html
+  }
 }
 
 class ListBooks {
-   updateListBooks() {
-       const bookList = document.querySelector('#book-list');
-
-       books.forEach((book) => {
-           const oneBook = new Book(book);
-           const html = oneBook.render();
-           bookList.insertAdjacentHTML('beforeend', html)
-       })
-   }
+  updateListBooks() {
+    const bookList = document.querySelector('#book-list')
+    bookList.innerHTML = ''
+    books.forEach((book) => {
+      const oneBook = new Book(book)
+      const html = oneBook.render()
+      bookList.insertAdjacentHTML('beforeend', html)
+    })
+  }
 }
 
-const form = new Form('#book-form');
-const listBooks = new ListBooks();
+const form = new Form('#book-form')
+const listBooks = new ListBooks()
 
 //Добавить верстку на форму
 //Добавить верстку на список книг
@@ -133,36 +132,6 @@ const listBooks = new ListBooks();
 //4. Добавить сортировку по названию книги
 
 //5. Добавить фильтр по рейтингу
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 // Подсказки
 
