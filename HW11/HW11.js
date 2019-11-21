@@ -40,7 +40,6 @@ class Post {
         photoCol.append(img)
       });
   }
-//   thumbnailUrl
   render(post) {
       const div = document.createElement('div')
       div.textContent = post.title;
