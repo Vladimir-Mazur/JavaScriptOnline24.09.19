@@ -115,24 +115,24 @@ class Form {
   }
   sortPlusBook(book) {
     book.preventDefault();
-    const newBooks = books.sort((a, b) => {
+    books.sort((a, b) => {
         return a.price - b.price;
     })
-    const allBookList = document.querySelector('#book-list');
+    const allBookList = document.querySelector('.new-book-list');
     allBookList.innerHTML = '';
-    newBooks.forEach(field => {
+    books.forEach(field => {
         let bookList = new ListBooks(field)
         bookList.updateListBooks()
     })
   }
   sortMinusBook(book) {
     book.preventDefault();
-    const newBooks = books.sort((a, b) => {
+    books.sort((a, b) => {
         return b.price - a.price;
     })
-    const allBookList = document.querySelector('#book-list');
+    const allBookList = document.querySelector('.new-book-list');
     allBookList.innerHTML = '';
-    newBooks.forEach(field => {
+    books.forEach(field => {
         let bookList = new ListBooks(field)
         bookList.updateListBooks()
     })
@@ -145,7 +145,8 @@ class Book {
   }
   render() {
     const { book_name, price, author, country, url, rate, genre } = this.book;
-      const html = `<div class="line"></div>
+      if (typeof price === Number) {
+        const html = `<div class="line"></div>
         <div class="new-book">
             <img src="${url}">
             <h2>${book_name}</h2>
@@ -156,6 +157,9 @@ class Book {
             <div class="rate book-parametrs"><span>Рейтинг:</span><span>${rate}</span></div>
             <button class="btn-default btn-buy">Купить</button>
         </div>`;
+      } else {
+        console.error('don\'t correct value)
+      }
       return html;
   }
 }

@@ -21,17 +21,17 @@ class Service {
             .then((response) => { return response.json()})
             .catch((err) => { console.error('Моя ошибка - ', err) })
     }
-    searchRequst({search='', sortBy =''}) {
+    searchRequst({search='', sort =''}) {
         if(search !== '') {
             this.search = search;
         }
-        if(sortBy !== '') {
-            this.sortBy = sortBy;
+        if(sort !== '') {
+            this.sort = sort;
         }
 
-        return fetch(`https://newsapi.org/v2/everything?q=${this.search}&sortBy=${this.sortBy}&apiKey=${this.key}`)
-            .then((response) => { return response.json()})
-            .catch((err) =>  {console.error('моя ошибка - ', err)})
+        return fetch(`https://newsapi.org/v2/everything?q=${this.search}&sort=${this.sort}&apiKey=${this.key}`)
+             .then((response) => { return response.json()})
+             .catch((err) =>  {console.error('моя ошибка - ', err)})
     }
 }
 
