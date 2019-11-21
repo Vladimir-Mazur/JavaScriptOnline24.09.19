@@ -145,22 +145,22 @@ class Book {
   }
   render() {
     const { book_name, price, author, country, url, rate, genre } = this.book;
-      if (typeof price === Number) {
-        const html = `<div class="line"></div>
-        <div class="new-book">
-            <img src="${url}">
-            <h2>${book_name}</h2>
-            <div class="author book-parametrs"><span>Автор: </span><span>${author}</span></div>
-            <div class="price book-parametrs"><span>Цена: </span><span class="price">${price}$</span></div>
-            <div class="genre book-parametrs"><span>Жанр: </span><span>${genre}</span></div>
-            <div class="country book-parametrs"><span>Страна: </span><span>${country}</span></div>
-            <div class="rate book-parametrs"><span>Рейтинг:</span><span>${rate}</span></div>
-            <button class="btn-default btn-buy">Купить</button>
-        </div>`;
-      } else {
-        console.error('don\'t correct value)
-      }
-      return html;
+    // if (typeof price === Number) {
+      const html = `<div class="line"></div>
+      <div class="new-book">
+          <img src="${url}">
+          <h2>${book_name}</h2>
+          <div class="author book-parametrs"><span>Автор: </span><span>${author}</span></div>
+          <div class="price book-parametrs"><span>Цена: </span><span class="price">${price}$</span></div>
+          <div class="genre book-parametrs"><span>Жанр: </span><span>${genre}</span></div>
+          <div class="country book-parametrs"><span>Страна: </span><span>${country}</span></div>
+          <div class="rate book-parametrs"><span>Рейтинг:</span><span>${rate}</span></div>
+          <button class="btn-default btn-buy">Купить</button>
+      </div>`;
+    return html;
+    // } else {
+    //   console.error('don\'t correct value')
+    // }
   }
 }
 
