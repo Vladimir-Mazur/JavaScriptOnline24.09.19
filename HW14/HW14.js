@@ -3,11 +3,17 @@
 const holes = document.querySelectorAll('.hole');
 const moles = document.querySelectorAll('.mole');
 const score = document.querySelector('.score');
+const gameScore = document.querySelector('.game-score');
+const allScore = document.querySelector('.game-all_score');
 const startBtn = document.querySelector('.start');
 const menu = document.querySelector('.menu');
 const currentName = document.querySelector('#name');
-const game = document.querySelector('.after-game');
+const game = document.querySelector('game')
+const afterGame = document.querySelector('.after-game');
 const afterGameScore = document.querySelector('.score')
+const closeBtn = document.querySelector('.close-btn')
+const gameOverImg = document.querySelector('.game-over')
+let molesNumber = 0;
 let isPlaying = false;
 let countMoles = 0;
 
@@ -18,8 +24,12 @@ moles.forEach((mole) => {
 })
 
 function catchMole() {
-    countMoles++;
+    const parentClass = document.querySelector('.up')
+    if (parentClass !== null) {
+        countMoles++;
+    }
     score.textContent = countMoles;
+    gameScore.textContent = countMoles;
     this.parentElement.classList.remove('up');
 }
 
@@ -34,9 +44,10 @@ function randomHole(holes) {
 }
 
 function showMole() {
-    const time = randomTime(1000, 2000);
+    const time = randomTime(700, 1000);
     const hole = randomHole(holes);
     hole.classList.add('up');
+    molesNumber += 1
     setTimeout(() => {
         hole.classList.remove('up');
         if (isPlaying) showMole();
@@ -46,31 +57,33 @@ function showMole() {
 
 function startGame() {
     menu.style.display = 'none';
-    game.classList.remove('game-over')
-    afterGameBtn.classList.add('invisible')
+    afterGame.classList.remove('game-over')
 
     showMole();
     isPlaying = true;
     setTimeout(() => {
         isPlaying = false;
-    }, 3000)
+    }, 10000)
 }
 
 function addBtn() {
     afterGameBtn.classList.remove('invisible')
 }
 
-afterGameBtn.classList.add('after-game_btn')
-
 function finishGame() {
-    game.classList.add('game-over')
-    afterGameBtn.classList.remove('invisible')
-    afterGameBtn.addEventListener("click", () => {afterGameBtn.classList.add('invisible')})
+    afterGame.classList.add('game-over')
     menu.style.display = 'block';
     const list = JSON.parse(localStorage.getItem('usersList')) || [];
     list.push({name: currentName.value, count: countMoles})
     localStorage.setItem('usersList', JSON.stringify(list))
-    afterGameScore.textContent = 'close'
+    allScore.textContent = molesNumber
+    closeBtn.classList.remove('invisible')
+    gameOverImg.classList.remove('invisible')
+    closeBtn.addEventListener('click', () => {
+        closeBtn.classList.add('invisible')
+        gameOverImg.classList.add('invisible')
+        location.reload();
+    })
 
     countMoles = 0;
     score.textContent = 0;

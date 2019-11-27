@@ -31,7 +31,7 @@ h1 {
     margin: 0 auto;
 }
 
-.start {
+.default-btn {
     font-family: 'Amatic SC', cursive;
     font-size: 5em;
     background: #986a24;
@@ -100,16 +100,26 @@ h1 {
     height: 100%;
     background: #986a24;
     color: white;
+    z-index: 3;
 }
 
 .game-over {
     visibility: visible;
 }
 
-.after-game_btn {
-    z-index: 10;
-}
-
 .invisible {
     visibility: hidden;
+}
+
+.close-btn {
+    position: absolute;
+    border: none;
+    background: transparent;
+    z-index: 10;
+    top: 35%;
+    left: 32%;
+}
+
+.game-over {
+    background: #986a24;
 }
