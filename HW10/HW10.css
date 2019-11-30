@@ -1,0 +1,71 @@
+body {
+   background-color: #d3d2d2;
+   margin-left: 10px;
+}
+
+div#book-list {
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+}
+
+div.btn-default {
+   display: flex;
+   justify-content: center;
+}
+
+button {
+   background-color: #008000;
+   color: #d3d2d2;
+   padding: 5px 50px;
+   border: 2px solid rgb(102, 93, 93);
+   border-radius: 10px;
+   margin-bottom: 25px;
+}
+
+body {
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+}
+
+label {
+   border: 3px double #008000;
+   padding: 10px;
+   width: 300px;
+}
+
+.rate {
+   display: flex;
+   flex-direction: row;
+   justify-content: space-between;
+}
+
+div.new-book {
+   display: flex;
+    flex-direction: column;
+    align-items: center;
+   width: 75%;
+}
+
+div.new-book img {
+   width: 100%;
+}
+
+div.line {
+   padding: 10px 0;
+   margin: 35px 0;
+   border-top: 2px solid rgb(148, 148, 148);
+   width: 100%;
+}
+
+span.price {
+   color:  #008000;
+   font-size: 24px;
+   font-weight: bold;
+}
+
+button.btn-buy {
+   margin: 0;
+   width: 100%;
+}

@@ -5,7 +5,26 @@
     <title>Title</title>
 </head>
 <body>
-<div id="photos"></div>
+    <style>
+        .img {
+            display: flex;
+            position: absolute;
+            align-items: flex-end;
+        }
+
+        .col2 {
+            width: 50%;
+        }
+
+        .row {
+            display: flex;
+            justify-content: space-between;
+        }
+    </style>
+<div class="row">
+    <div class="text col2"></div>
+    <div class="photos col2"></div>
+</div>
 <script src="HW11.js"></script>
 </body>
 </html>
