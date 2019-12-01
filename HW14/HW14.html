@@ -1,0 +1,75 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href='https://fonts.googleapis.com/css?family=Amatic+SC:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="HW14.css">
+</head>
+<body>
+<h1>Whack a mole! <span class="score">0</span></h1>
+<div class="validation-warning">
+    <h3 class="warning1 invisible">ВЫ НЕЗАПОЛНИЛИ ОДНО ИЗ ОБЯЗАТЕЛЬНЫХ ПОЛЕЙ ------------></h3>
+    <h3 class="warning2 invisible">ВЫ НЕЗАПОЛНИЛИ ОДНО ИЗ ОБЯЗАТЕЛЬНЫХ ПОЛЕЙ ------------></h3>
+</div>
+<div class="menu">
+    <label class="name-game">
+        Введите имя:
+        <input type="text" id="name" required />
+    </label>
+    <h2>Выберите уровень сложности:</h2>
+    <div class="choose-lvl">
+        <select id="lvl" required>
+            <option selected disabled>Выберите сложность</option>
+            <option value="1" class="lvl1">Легкий</option>
+            <option value="2" class="lvl2">Нормальный</option>
+            <option value="3" class="lvl3">Хардкор</option>
+        </select>
+    </div>
+    <button class="default-btn start">Start game!</button>
+</div>
+<div class="game">
+    <div class="hole hole1">
+        <div class="mole"></div>
+    </div>
+    <div class="hole hole2">
+        <div class="mole"></div>
+    </div>
+    <div class="hole hole3">
+        <div class="mole"></div>
+    </div>
+    <div class="hole hole4">
+        <div class="mole"></div>
+    </div>
+    <div class="hole hole5">
+        <div class="mole"></div>
+    </div>
+    <div class="hole hole6">
+        <div class="mole"></div>
+    </div>
+</div>
+<div class="last-games">
+    <ul class="last-games_list">
+        <li class="game1"></li>
+        <li class="game2"></li>
+        <li class="game3"></li>
+        <li class="game4"></li>
+        <li class="game5"></li>
+        <li class="game6"></li>
+        <li class="game7"></li>
+        <li class="game8"></li>
+        <li class="game9"></li>
+        <li class="game10"></li>
+    </ul>
+</div>
+<div class="after-game">
+    <h1>Игра окончена, вы поймали <span class="game-score">0</span> из <span class="game-all_score"></span></h1>
+</div>
+<div class="close-btn_wrapper">
+    <button class="close-btn invisible"><img class="game-over invisible" src="img/close-btn.png"></button>
+</div>
+<div class="popup"></div>
+<script src="HW14.js"></script>
+</body>
+</html>
