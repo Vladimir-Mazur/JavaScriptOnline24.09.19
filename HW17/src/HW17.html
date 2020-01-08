@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" type="text/css" href="HW17.css">
+    <title>JSON Server</title>
+</head>
+<body>
+    <div class="container">
+        <hr>
+        <div class="title">
+            <h2 class="invoices-title">Invoices</h2>
+        </div>
+        <section class="actions">
+            <div class="wrapper">
+                <p>Actions</p>
+                <button class="btn btn-actions">Add new</button>
+            </div>
+        </section>
+        <section class="invoices">
+            <div class="wrapper">
+                <p>Invoices</p>
+                <div class="table">
+                    <table cellspacing="0">
+                        <tr>
+                            <th class="col4">Create</th>
+                            <th class="col4">№</th>
+                            <th class="col4">Supply</th>
+                            <th class="col4">Comment</th>
+                        </tr>
+                        <tr>
+                            <td class="col4">20-03-2018</td>
+                            <td class="col4"><a href="#">INV-000001</a></td>
+                            <td class="col4">20-03-2018</td>
+                            <td class="col4">Test invoice</td>
+                        </tr>
+                        <tbody></tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+    </div>
+    <div class="new-container invisible">
+        <hr>
+        <div class="title">
+            <h2 class="invoices-title">Create Invoice</h2>
+        </div>
+        <div class="creator">
+            <div class="new-wrapper">
+                <div class="number">
+                    <p>Number:</p>
+                    <input type="text" id="num">
+                    <a href="#"><i class="fa fa-cog num-fa" aria-hidden="true"></i></a>
+                </div>
+                <div class="supply-date">
+                    <p>Supply Date</p>
+                    <input type="date" name="supply" id="sup">
+                </div>
+                <div class="invoice-date">
+                    <p>Invoice Date:</p>
+                    <input type="date" name="Invoice" id="inv">
+                </div>
+                <div class="comment">
+                    <p>Comment:</p>
+                    <textarea name="comments" id="com" cols="160" rows="2"></textarea>
+                </div>
+            </div>
+            <button class="btn save-btn">Save</button>
+        </div>
+    </div>
+    <div class="error">
+        <h2>not correctly filled out the questionnaire</h2>
+    </div>
+    <script src="https://kit.fontawesome.com/1e96a6e42f.js" crossorigin="anonymous"></script>
+    <script src="HW17.js"></script>
+</body>
+</html>
